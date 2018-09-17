@@ -1,0 +1,44 @@
+package com.apamax;
+
+/** 
+  Expose Correlator configuration properties to EPL.
+
+  To use this you must list the configuration properties you 
+  wish to expose to EPL in the configuration file for this 
+  plugin. For example:
+
+  eplPlugins:
+    configurationPlugin:
+      pythonFile: ${APAMA_WORK}/lib/ConfigurationPlugin.py
+      config:
+         PROPERTY_NAME: ${PROPERTY_NAME}
+         OTHER_PROPERTY: ${OTHER_PROPERTY}
+*/
+event ConfigurationPlugin {
+	import "configurationPlugin" as plugin;
+	/**
+		Return a dictionary containing all property values
+		defined in the configuration file.
+	
+		@return A dictionary with string keys as defined in the config file and the value as an any.
+	*/
+	static action getAllProperties() returns dictionary<string, any>
+	{
+		return plugin.getAllProperties();
+	}
+	/**
+		Return the value of a specific property defined
+		in the configuration file. Note: all values are strings, 
+		but you may define list or map items in the config file
+		which are sequence<any> or dictionary<any, any>
+		respectively.
+	
+		@param name The name of the property.
+	
+		@return The value with the given name or an empty any if not defined in the config file.
+	*/
+	static action getProperty(string name) returns any
+	{
+		return plugin.getProperty(name);
+	}
+}
