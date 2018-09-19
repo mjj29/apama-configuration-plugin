@@ -1,6 +1,10 @@
 # apama-configuration-plugin
 Apama EPL plugin to expose configuration items to EPL
 
+## Supported Apama version
+
+This works with Apama 10.3 or later
+
 ## Building the plugin
 
 To build the plugin you just need to copy ConfigurationPlugin.py to `$APAMA_WORK/lib` (Linux) `%APAMA_WORK%\lib` (Windows) and eventdefinitions/ConfigurationPlugin.mon to `$APAMA_WORK/monitors` (Linux) `%APAMA_WORK%\monitors` (Windows)
@@ -19,7 +23,7 @@ There is a provided Dockerfile which will build the plugin, run tests and produc
 
     docker build -t apama_with_configuration_plugin .
 
-By default the public docker images from Docker Store for 10.3 will be used (once 10.3 has been released). To use an older version run:
+By default the public docker images from Docker Store for 10.3 will be used (once 10.3 has been released). To use another version run:
 
     docker build -t apama_with_configuration_plugin --build-arg APAMA_VERSION=10.1 .
 
