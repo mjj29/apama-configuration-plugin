@@ -23,5 +23,6 @@ eplPlugins:
       pythonFile: ${APAMA_WORK}/lib/ConfigurationPlugin.py
       class: ConfigurationPlugin
       config:
-         # list properties here that you want to expose
-         # PROPERTY=${PROPERTY}
+         APAMA_WORK: ${APAMA_WORK}
+         COMMAND_LINE: ${COMMAND_LINE}
+         DIRECT_VALUE: [1,2,3,4]

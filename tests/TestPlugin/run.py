@@ -6,8 +6,8 @@ import re
 class PySysTest(ApamaBaseTest):
 	def execute(self):
 		correlator = CorrelatorHelper(self, name='testcorrelator')
-		correlator.start(logfile='testcorrelator.log', config=PROJECT.APAMA_WORK+"/hackweek/apama-configuration-plugin/config/CorrelatorConfig.yaml", arguments=['-DCOMMAND_LINE=commandValue'])
-		correlator.injectEPL(filenames=['ConfigurationPlugin.mon'], filedir=PROJECT.APAMA_WORK+"/hackweek/apama-configuration-plugin/eventdefinitions")
+		correlator.start(logfile='testcorrelator.log', config=self.input+"/config.yaml", arguments=['-DCOMMAND_LINE=commandValue'])
+		correlator.injectEPL(filenames=['ConfigurationPlugin.mon'], filedir=PROJECT.APAMA_WORK+"/monitors")
 		correlator.injectEPL(filenames=['test.mon'])
 		correlator.flush() 
 

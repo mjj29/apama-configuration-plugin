@@ -3,7 +3,7 @@ Apama EPL plugin to expose configuration items to EPL
 
 ## Building the plugin
 
-To build the plugin you just need to copy ConfigurationPlugin.py to `$APAMA_WORK/lib` (Linux) `%APAMA_WORK%\lib` (Windows).
+To build the plugin you just need to copy ConfigurationPlugin.py to `$APAMA_WORK/lib` (Linux) `%APAMA_WORK%\lib` (Windows) and eventdefinitions/ConfigurationPlugin.mon to `$APAMA_WORK/monitors` (Linux) `%APAMA_WORK%\monitors` (Windows)
 
 To generate the Apama documentation for the ConfigurationPlugin module run this command on Linux:
 
@@ -12,6 +12,26 @@ To generate the Apama documentation for the ConfigurationPlugin module run this 
 Or on Windows:
 
     java -jar %APAMA_HOME%\lib\ap-generate-apamadoc.jar doc eventdefinitions
+
+## Building using Docker
+
+There is a provided Dockerfile which will build the plugin, run tests and produce an image which is your base image, plus the CSV plugin. Application images can then be built from this image. To build the image run:
+
+    docker build -t apama_with_configuration_plugin .
+
+By default the public docker images from Docker Store for 10.3 will be used (once 10.3 has been released). To use an older version run:
+
+    docker build -t apama_with_configuration_plugin --build-arg APAMA_VERSION=10.1 .
+
+To use custom images from your own repository then use:
+
+    docker build -t apama_with_configuration_plugin --build-arg APAMA_BUILDER=builderimage --build-arg APAMA_IMAGE=runtimeimage .
+
+## Running tests
+
+To run the tests for the plugin you will need to use an Apama command prompt. Then run the tests from within the tests directory:
+
+    pysys run
 
 ## Using the plugin
 
